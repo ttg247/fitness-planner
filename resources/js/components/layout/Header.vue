@@ -1,6 +1,6 @@
 <script setup>
 	import { ref } from 'vue'
-    import ChatPanel from '@/Components/layout/ChatPanel.vue'
+    import ChatPanel from '@/components/layout/ChatPanel.vue'
 
     const isChatVisible = ref(false)
 

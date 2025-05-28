@@ -1,25 +1,30 @@
 import { defineStore } from 'pinia'
+import { ref } from 'vue'
+import api from '@/api'
 
-export const useExerciseStore = defineStore('exercise', {
-	state: () => ({
-		exercises: [
-			{
-				id: 1,
-				name: 'Push Ups',
-				bodyPart: 'chest',
-				reps: 15,
-				gif: 'https://media.giphy.com/media/l0MYKDRP0L6X1xMMY/giphy.gif',
-				description: 'A basic upper body exercise targeting the chest, shoulders, and triceps.',
-			},
-			{
-				id: 2,
-				name: 'Jumping Jacks',
-				bodyPart: 'full body',
-				reps: 30,
-				gif: 'https://media.giphy.com/media/3o6ZsZvYbXm2PfJbHG/giphy.gif',
-				description: 'A cardio exercise that works the entire body and increases heart rate.',
-			},
-			
-		],
-	}),
+export const useExerciseStore = defineStore('exercise', () => {
+  const exercises = ref([])
+  const loading = ref(false)
+  const error = ref(null) 
+
+  async function fetchExercises() {
+    loading.value = true
+    error.value = null
+    try {
+      const res = await api.get('/exercises')
+      exercises.value = res.data
+    } catch (err) {
+      console.error(err)
+      error.value = 'Failed to load exercises'
+    } finally {
+      loading.value = false
+    }
+  }
+
+  return {
+    exercises,
+    loading,
+    error, // ✅ return error too if you want to use it in your component
+    fetchExercises,
+  }
 })

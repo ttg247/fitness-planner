@@ -1,4 +1,6 @@
 <?php
 
-// routes/web.php
-Route::get('/{any}', fn () => view('spa'))->where('any', '.*');
+use Illuminate\Support\Facades\Route;
+
+Route::get('/{any}', fn () => view('spa'))
+    ->where('any', '^(?!api).*$');

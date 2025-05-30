@@ -17,9 +17,11 @@ class Exercise extends Model
         'gif',
     ];
 
-    // Relationships (if any) can be defined here
-    public function programDayExercises()
+    public function programDays()
     {
-        return $this->hasMany(ProgramDayExercise::class);
+        return $this->belongsToMany(ProgramDay::class, 'program_day_exercises')
+            ->withPivot('sets', 'reps', 'order')
+            ->withTimestamps();
     }
+
 }

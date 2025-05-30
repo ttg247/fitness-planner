@@ -44,6 +44,29 @@ export const routes = [
                 },
             },
             {
+                path: 'programs',
+                name: 'program',
+                component: () => import('@/pages/Programs.vue'),
+                meta: {
+                requiresAuth: true,
+                showInSidebar: true,
+                title: 'Programs',
+                icon: 'ik ik-book-closed',
+                order: 2,
+                },
+            },
+            {
+                path: 'programs/:id',
+                name: 'programDetails',
+                component: () => import('@/pages/ProgramDetails.vue'),
+                meta: {
+                requiresAuth: true,
+                showInSidebar: true,
+                title: 'Program Details',
+                icon: 'ik ik-book-closed',
+                },
+            },
+            {
                 path: 'progress',
                 name: 'progress',
                 component: () => import('@/pages/Progress.vue'),

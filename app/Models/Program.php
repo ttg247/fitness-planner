@@ -2,10 +2,19 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Program extends Model
 {
+    use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'description',
+        'difficulty',
+    ];
+
     public function days()
     {
         return $this->hasMany(ProgramDay::class);

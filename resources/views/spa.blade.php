@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="UTF-8" />
-    <title>Solar SPA</title>
+    <title >{{ config('app.name', 'Laravel') }}</title>
 
     {{-- Plugin CSS (served from public/plugins) --}}
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap/dist/css/bootstrap.min.css') }}">

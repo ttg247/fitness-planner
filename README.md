@@ -41,7 +41,7 @@ fitness-planner/
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/your-username/fitness-planner.git
+git clone https://github.com/ttg247/fitness-planner.git
 cd fitness-planner
 ```
 
